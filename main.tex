@@ -2,6 +2,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{indentfirst}
+\usepackage{verbatim}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\renewcommand{\figurename}{Slika}
+\graphicspath{ {./Slike/} }
 
 \title{INFORMACIONI SISTEMI\\Online Novinarska Agencija}
 \author{
@@ -34,5 +40,99 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 \indent \textbf{Administrator} - ima ulogu da dobijene vesti skladišti u bazi, i pruži mogućnost da se vesti mogu pretraživati ili obrisati na zahtev urednika. Takođe administrator bi trebao da omogući novinarima interfjes ka bazi kako bi mogli da pretražuju objavljene vesti i teme na kojima rade drugi novinari (da se vesti ne bi ponavljale) \\
 \indent \textbf{Urednik} - čija je uloga da procesuira dobijene vesti, donese odluku koje od njih će bit objavljene, i vrši korekcije ukoliko je to potrebno. Pored toga, on može obavljati i funckiju novinara, odnosno može i sam pisati vesti. U pogledu interakcije sa čitaocima, uloga urednika je i da vrši recenziranje pristiglih komentara korisnika. \\
 \indent \textbf{Čitalac} - koji koristi sistem za čitanje objavljenih vesti. Pored toga, registrovani čitaoci mogu postavljati komentare, davati ocene za objavljene vesti, i imati uvid u komentare drugih čitalaca.
+\indent Na Slici 1 se nalazi dijagram koji prikazuje učesnike sistema i njihove akcije.
+
+\newpage
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.7]{Slucajevi upotrebe}
+\caption{Slučajevi upotrebe}
+\label{slk:dtp}
+\end{figure}
+
+\newpage
+
+\section{Slučajevi upotrebe}
+\indent Posmatrani sistem identifikuje sledeće slučajeve upotrebe:
+\begin{itemize} 
+\item Registracija
+\item Autorizacija 
+\item Slanje vesti
+\item Pretraživanje vesti i tema
+\item Manipulacija vestima u bazi
+\item Selekcija vesti 
+\item Manipulacija komentara
+\item Čitanje vesti
+\item Komentarisanje i ocenjivanje vesti
+
+\end{itemize}
+
+\subsection{Registracija}
+\begin{itemize}
+    \item \textbf{Kratak opis:} Neregistrovani korisnici sistema koji žele da se prijave na sistem treba da popune formular za prijavu, pri čemu se formular razlikuje od uloge korisnika sistema. Prikupljene informacije sistem validira i obaveštava korisnika o ishodu podnete registracije.
+    \item \textbf{Učesnici:} Svi neregistrovani korisnici sistema.
+    \item \textbf{Preduslovi:} Sistem je aktivan i dostupan(svi korisnici sa internet konekcijom mogu da pristupe sistemu).
+    \item \textbf{Postuslovi:} Po uspešnoj registraciji, korisnici dobijaju svoje kredencijale kojima se mogu prijaviti na sistem. Svaki korisnik na osnovu svoje uloge dobija određene privilegije nad sistemom. Prikupljeni podaci čuvaju se u bazi podataka.
+    \item \textbf{Osnovni tok:}
+        \begin{enumerate}
+            \item Korisnik otvara formular za registraciju na web stranici.
+            \item Korisnik bira ulogu pod kojom želi da se registruje.
+            \item Sistem na osnovu izabrane uloge generiše formular za registrovanje.
+            \item Korisnik unosi tražene podatke.
+            \item Sistem validira unete podatke.
+            \item Sistem šalje mail za potvrdu registracije.
+            \item Sistem obaveštava korisnika da je mail za potvrdu poslat.
+            \item Korisnik potvrdjuje ispravnost podataka.
+            \item Sistem čuva podatke u bazi podataka.
+            \item Sistem obaveštava korisnika o uspešno kreiranom nalogu.
+	    \end{enumerate}
+    \item \textbf{Alternativni tokovi:}
+        \begin{itemize}
+            \item[A1.] \textbf{Neuspešna validacija podataka.} Ukoliko sistem prilikom validacije naidje na neke neispravne podatke(pogrešan format, nemogućnost utvrđivanje identiteta zaposlenog...) obaveštava korisnika o pogrešno unetim podacima i zahteva njihovu korekciju.
+            \item[A2.] \textbf{Zauzeto korisničko ime.} Sistem utvrđuje dostupnost unetog korisničkog imena. U slučaju da ime nije dostupno, sistem zahteva novo ime, uz odredjene sugestije na osnovu prvog unosa.
+            \item[A3.] \textbf{E-mail za potvrdu nije stigao.} Ukoliko korisnik nije dobio e-mail za potvrdu, može zahtevati od sistema ponovno slanje e-maila.
+        \end{itemize}
+    \item \textbf{Specijalni zahtevi:}
+        \begin{itemize}
+			\item Sistem zahteva odredjen kvalitet unete lozinke radi veće sigurnosti.
+		\end{itemize}
+	\item \textbf{Dodatne informacije:}
+        \begin{itemize}
+            \item  Podaci potrebni za prijavu radnika:
+                \begin{itemize}
+                    \item Odabir uloge(novinar, urednik, administrator)
+                    \item ime
+                    \item prezime
+                    \item korisničko ime
+                    \item broj radne knjižice
+                    \item e-mail adrese
+                    \item broj telefona
+                    \item lozinka
+                \end{itemize}
+             \item  Podaci potrebni za prijavu čitaoca:
+                \begin{itemize}
+                    \item ime
+                    \item prezime
+                    \item korisničko ime
+                    \item e-mail adrese
+                    \item lozinka
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+\newpage
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.6]{Registracija_korisnika.jpg}
+\caption{Registracija korisnika}
+\label{slk:dtp}
+\end{figure}
+
+\newpage
+
+
+
 
 \end{document}
