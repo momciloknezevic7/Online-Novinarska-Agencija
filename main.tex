@@ -132,7 +132,90 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 
 \newpage
 
+\subsection{Autorizacija}
+\begin{itemize}
+    \item \textbf{Kratak opis:} Svi registrovani korisnici sistema, mogu se prijaviti i koristiti funkcije sistema. Neautorizovani korisnici sistema mogu ostvariti jedino funkciju čitanja vesti.
+    \item \textbf{Preduslovi:} Sistem je aktivan i korisnik ima registrovan nalog.
+    \item \textbf{Postuslovi:} Po uspešnoj autorizaciji, korisnik može da koristi sve funkcionalnosti sistema definisane njegovom ulogom.
+    \item \textbf{Osnovni tok:}
+        \begin{enumerate}
+            \item Korisnik otvara web stranicu za prijavljivanje.
+            \item Korisnik unosi tražene podatke.
+            \item Sistem validira unete podatke.
+            \item Sistem obaveštava korisnika o uspešnoj prijavi.
+            \item Sistem otvara novu sesiju za prijavljenog korisnika.
+            \item Sistem otvara početnu stranicu na osnovu uloge korisnika.
+	    \end{enumerate}
+    \item \textbf{Alternativni tokovi:}
+        \begin{itemize}
+            \item[A1.] \textbf{Neuspešna validacija podataka.} U slučaju pogrešno unetih kredencijala za prijavljivanje, sistem obaveštava korisnika o neispravnosti unetih podataka.
+            \item[A2.] \textbf{Veliki broj neuspelih pokušaja prijavljivanja.} U slučaju da je korisnik uneo pogrešne kredencijale određen broj puta, sistem ne dozvoljava ponovni unos podataka za prijavu do isteka određenog vremenskog perioda. Sistem obaveštava korisnika o trajanju perioda nemogućnosti prijavljivanja.
+        \end{itemize}
+    \item \textbf{Specijalni zahtevi:}
+        \begin{itemize}
+			\item U slučaju da se korisnik prijavio sa novog uređaja, sistem šalje e-mail za potvrdu autentičnosti korisnika.
+		\end{itemize}
+	\item \textbf{Dodatne informacije:}
+        \begin{itemize}
+            \item  Podaci potrebni za prijavu radnika:
+                \begin{itemize}
+                    \item korisničko ime
+                    \item broj radne knjižice
+                    \item lozinka
+                \end{itemize}
+             \item  Podaci potrebni za prijavu čitaoca:
+                \begin{itemize}
+                    \item korisničko ime
+                    \item lozinka
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
 
+\newpage
+
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.6]{Autorizacija_korisnika.jpg}
+    \caption{Autorizacija korisnika}
+    \label{slk:dtp}
+\end{figure}
+
+\newpage
+
+\subsection{Slanje vesti}
+\begin{itemize}
+    \item \textbf{Kratak opis:} Korisnici koji su se autorizovali kao novinar ili urednik imaju mogućnost slanja vesti, što podrazumeva slanje autorskog teksta i eventualnog priloga (slika ili video) sa ciljem da se vest objavi. 
+    \item \textbf{Preduslovi:} Sistem je aktivan. Korisnik je prijavljen na nalog koji mogućnost slanja vesti.  
+    \item \textbf{Postuslovi:} Vest je skladištena u privremenu bazu i čeka odobrenje. Korisnik dobija obaveštenje da je vest pristigla.
+    \item \textbf{Osnovni tok:}
+        \begin{enumerate}
+            \item Korisnik otvara web stranicu za slanje vesti.
+            \item Korisnik prilaže vest.
+            \item Sistem prihvata pristiglu vest i smešta je u bazu vesti koje su na čekanju.
+            \item Sistem obaveštava korisnika o prispeću vesti i njenom statusu.
+	    \end{enumerate}
+    \item \textbf{Alternativni tokovi:}
+        \begin{itemize}
+            \item[A1.] \textbf{Korisnik nije autorizovan.} U slučaju da korisnik pokuša da pristupi stranici za slanje vesti, a prethodno se nije prijavio, sistem preusmerava korisnika na stranicu za autorizciju.
+            \item[A2.] \textbf{Korisnik je poslao vest bez sadržaja.} U slučaju da je korisnik pokušao da pošalje vest koja nema sadržinu, sistem ga obaveštava o ovoj nepravilnosti.
+        \end{itemize}
+    \item \textbf{Dodatne informacije:}
+        \begin{itemize}
+            \item  Podaci koje korisnik prilaže:
+                \begin{itemize}
+                    \item Autorski tekst (obavezno)
+                    \item Slika
+                    \item Video zapis
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.75]{Slanje_vesti.jpg}
+    \caption{Slanje vesti}
+    \label{slk:dtp}
+\end{figure}
 
 
 \end{document}
