@@ -46,7 +46,7 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[scale=0.7]{Slucajevi upotrebe}
+\includegraphics[scale=0.7]{Slucajevi_upotrebe.jpg}
 \caption{Slučajevi upotrebe}
 \label{slk:dtp}
 \end{figure}
@@ -121,7 +121,6 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
         \end{itemize}
 \end{itemize}
 
-\newpage
 
 \begin{figure}[htbp!]
 \centering
@@ -171,7 +170,6 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
         \end{itemize}
 \end{itemize}
 
-\newpage
 
 \begin{figure}[htbp!]
     \centering
@@ -212,10 +210,56 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 
 \begin{figure}[htbp!]
     \centering
-    \includegraphics[scale=0.75]{Slanje_vesti.jpg}
+    \includegraphics[scale=0.7]{Slanje_vesti.jpg}
     \caption{Slanje vesti}
     \label{slk:dtp}
 \end{figure}
 
+\newpage
+
+\subsection{Pretraživanje vesti i tema}
+\begin{itemize}
+    \item \textbf{Kratak opis:} Sistem omogućava korisnicima autorizovanim sa ulogama: novinar, urednik i administrator da pretražuju objavljene vesti, i spiskove tema na kojima rade ostali novinari. Cilj pretrage je da se spreči ponavljanje tema na koje novinari pišu kao i da se iskoriste već postojeće vesti.  
+    \item \textbf{Preduslovi:} Sistem je aktivan. Korisnik je autorizovan sa odgovarajućom ulogom. 
+    \item \textbf{Postuslovi:} Korisnik dobija listu vesti ili tema koje ispunjavaju uslove pretrage.
+    \item \textbf{Osnovni tok:}
+        \begin{enumerate}
+            \item Korisnik otvara web stranicu za pretraživanje.
+            \item Korisnik unosi uslove po kojima želi da filtrira pretragu.
+            \item Sistem obrađuje unete uslove i iz baze podataka vraća listu koja odgovara uslovima pretrage.
+            \item Sistem šalje dobijenu listu korisniku.
+            \item Korisnik može da nastavi ili da završi pretragu.
+	    \end{enumerate}
+    \item \textbf{Alternativni tokovi:}
+        \begin{itemize}
+            \item[A1.] \textbf{Korisnik nije autorizovan.} U slučaju da korisnik pokuša da pristupi stranici za pretraživanje vesti, pri čemu nije prijavljen, sistem preusmerava korisnika na stranicu za autorizciju.
+            \item[A2.] \textbf{Za unete uslove pretrage ne postoje entiteti koji ih ispunjavaju.} U slučaju da ne postoje entiteti koji ispunjavaju uslove pretrage, sistem obaveštava korisnika o nastaloj situaciji.
+        \end{itemize}
+    \item \textbf{Specijalni zahtevi:}
+        \begin{itemize}
+			\item Neophodno je uneti bar jedan uslov pretrage.
+		\end{itemize}
+	\item \textbf{Dodatne informacije:}
+        \begin{itemize}
+            \item Pretragu je moguće vršiti po:
+                \begin{itemize}
+                    \item Vrsti pretrage (da li se vrši pretraga vesti ili tema)
+                    \item Naslovu vesti
+                    \item Oblasti u kojoj se nalazi vest
+                    \item Datumu objavljivanja vesti
+                    \item Autoru vesti
+                    \item Ključnim rečima u tekstu vesti
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.7]{Pretrazivanje_vesti_i_tema.jpg}
+    \caption{Pretrazivanje vesti i tema}
+    \label{slk:dtp}
+\end{figure}
+
+\newpage
 
 \end{document}
