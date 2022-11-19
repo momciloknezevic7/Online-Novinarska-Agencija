@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[english,serbian]{babel}
 \usepackage{indentfirst}
 \usepackage{verbatim}
 
@@ -53,6 +53,15 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 
 \newpage
 
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.7]{Dijagram_konteksta.png}
+\caption{Dijagram konteksta}
+\label{slk:dtp}
+\end{figure}
+
+\newpage
+
 \section{Slučajevi upotrebe}
 \indent Posmatrani sistem identifikuje sledeće slučajeve upotrebe:
 \begin{itemize} 
@@ -65,6 +74,7 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 \item Manipulacija komentara
 \item Čitanje vesti
 \item Komentarisanje i ocenjivanje vesti
+\item Manipulacija bazom podataka
 
 \end{itemize}
 
@@ -92,10 +102,13 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
             \item[A1.] \textbf{Neuspešna validacija podataka.} Ukoliko sistem prilikom validacije naidje na neke neispravne podatke(pogrešan format, nemogućnost utvrđivanje identiteta zaposlenog...) obaveštava korisnika o pogrešno unetim podacima i zahteva njihovu korekciju.
             \item[A2.] \textbf{Zauzeto korisničko ime.} Sistem utvrđuje dostupnost unetog korisničkog imena. U slučaju da ime nije dostupno, sistem zahteva novo ime, uz odredjene sugestije na osnovu prvog unosa.
             \item[A3.] \textbf{E-mail za potvrdu nije stigao.} Ukoliko korisnik nije dobio e-mail za potvrdu, može zahtevati od sistema ponovno slanje e-maila.
+             \item[A3.] \textbf{Administrator nije mogao da utvrdi da postoji zaposleni sa unetim podacim prilikom registracije.}
+             Sistem obaveštava korisnika da nije bilo moguće utvrditi identitet zaposlenog.
         \end{itemize}
     \item \textbf{Specijalni zahtevi:}
         \begin{itemize}
 			\item Sistem zahteva odredjen kvalitet unete lozinke radi veće sigurnosti.
+			\item Ukoliko se korisnik registruje kao zaposleni, potrebno je da administrator uradi proveru identiteta pre nego što se nalog kreira u bazi.
 		\end{itemize}
 	\item \textbf{Dodatne informacije:}
         \begin{itemize}
@@ -261,5 +274,84 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 \end{figure}
 
 \newpage
+
+\subsection{Manipulacija vestima u bazi}
+\begin{itemize}
+    \item \textbf{Kratak opis:} Sistem omogućava korisnicima autorizovanim sa ulogom urednika da manipulišu(ispravlaju, dopunjuju, brišu) svim vestima u bazi.
+    \item \textbf{Preduslovi:} Sistem je aktivan. Korisnik je autorizovan sa odgovarajućom ulogom. 
+    \item \textbf{Postuslovi:} Izmenjene vesti su uspešno sačuvane u bazi sa svojim izmenama.
+    \item \textbf{Osnovni tok:}
+        \begin{enumerate}
+            \item Korisnik otvara web stranicu koja mu daje uvid u sve vesti
+	        \item Korisnik pretražuje vesti
+	        \item Sistem vraća korisniku vesti koje odgovaraju uslovima pretrage
+	        \item Korisnik bira vest kojom želi da manipuliše
+	        \item Korisnik potvrdjuje da napravljene izmene budu trajno sačuvane
+	        \item Sistem napravljene promene čuva u bazi podataka
+	    \end{enumerate}
+    \item \textbf{Alternativni tokovi:}
+        \begin{itemize}
+            \item[A1.] \textbf{Korisnik nije napravio nijednu izmenu nad vestima koje je izabrao.} U slučaju da korisnik ipak nije izmenio vest, prilikom slanja zahtev da se vest sačuva sistem ga obaveštava o tome. Korisnik se zatim vraća na stranicu gde se nalaze sve vesti a sistem ne ažurirara podatke u bazi(vreme poslednje modifikacije, razlog poslednje izmene...).
+        \end{itemize}
+    \item \textbf{Specijalni zahtevi:}
+        \begin{itemize}
+			\item Prilikom menjanja odredjene vesti, potrebno je uneti i razlog zbog kog se ta izmena pravi.
+		\end{itemize}
+\end{itemize}
+
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.3]{Manipulacija_vestima_u_bazi.jpg}
+    \caption{Manipulacija vestima u bazi}
+    \label{slk:dtp}
+\end{figure}
+
+\newpage
+
+\subsection{Selekcija vesti}
+\begin{itemize}
+    \item \textbf{Kratak opis:} Sistem omogućava korisnicima autorizovanim sa ulogom urednika da vrši odabir napisanih vesti koje su na čekanju. Ukoliko urednik da odobrenje za odredjenu vest, ona će biti i objavljena.
+    \item \textbf{Preduslovi:} Sistem je aktivan. Korisnik je autorizovan sa odgovarajućom ulogom. 
+    \item \textbf{Postuslovi:} Rešen je status napisanih vesti koje su bile na čekanju.
+    \item \textbf{Osnovni tok:}
+        \begin{enumerate}
+            \item Korisnik otvara web stranicu na kojoj može videti sve vesti
+            \item Korisnik pretražuje vesti koje čekaju na odobrenje
+            \item Sistem vraća korisniku tražene vesti iz baze podataka
+            \item Korisnik radi selekciju vesti
+            \item Sistem beleži promene statusa vesti i izmene čuva u bazi podataka
+        \end{enumerate}
+    \item \textbf{Alternativni tokovi:}
+        \begin{itemize}
+            \item[A1.] \textbf{Ne postoje vesti na čekanju} Ukoliko nema vesti koje čekaju odobrenje, sistem obaveštava korisnika o tome. 
+        \end{itemize}
+    \item \textbf{Specijalni zahtevi:}
+        \begin{itemize}
+			\item Ukoliko vest nije dobila odobrenje, potrebno je da se navede razlog zbog kog se to desilo.
+		\end{itemize}
+	\item \textbf{Dodatne informacije:}
+        \begin{itemize}
+            \item Neki od glavnih kriterijuma selekcije vesti mogu biti:
+                \begin{itemize}
+                    \item Istinitost
+                    \item Potpunost
+                    \item Javni značaj 
+                    \item Objektivnost
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
