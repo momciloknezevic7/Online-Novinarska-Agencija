@@ -347,15 +347,145 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
     \includegraphics[scale=0.35]{Selekcija_vesti.jpg}
     \caption{Selekcija vesti}
     \label{slk:dtp}
-\end{figure}
+\end{figure} 
+
+\newpage
+
+\section{Baza podataka}
+Na osnovu definisanih slučajeva upotrebe, primećene su sledeće grupe podataka koje bi trebalo smestiti u bazu:
+\begin{itemize}
+    \item Nalog
+    \item Zaposleni
+        \begin{itemize}
+            \item Novinar
+            \item Urednik
+            \item Administrator 
+        \end{itemize}
+    \item Čitalac
+    \item Vest
+    \item Komentar
+    \item Ocena
+\end{itemize}
+
+\subsection{Podaci o nalogu}
+Obzirom da svaki korisnik mora kreirati nalog kako bi učestvovao u sistemu jasno je da se podaci neophodni za kreiranje naloga moraju zajedno grupisati. \\
+
+Podaci o nalogu koji se čuvaju su:
+\begin{itemize}
+    \item id
+    \item ime
+    \item prezime
+    \item email
+    \item korisničko ime
+    \item lozinka
+\end{itemize}
+
+Klasa nalog može se konkretizovati klasama zaposleni(nalozi sa specijalnim mogućnostima) i čitalac. Ova klasa vezuje se i sa klasom administrator, jer administratori mogu upravljati nalozima.
+
+\subsection{Podaci o zaposlenom}
+Zaposleni predstavlja konkretizaciju naloga. Zaposleni imaju naloge sa specijalizovanim ulogama.
+
+Podaci o zaposlenima koji se čuvaju:
+\begin{itemize}
+    \item broj radne knjižice
+    \item broj telefona
+\end{itemize}
+
+\subsection{Novinar}
+
+Novinar predstavlja konkretizaciju zaposlenog. Obzirom na svoju ulogu u sistemu(pisanje vesti), novinar od dodatnih podataka sadrži samo \textbf{id vesti} kako bi se moglo definisati koje vesti je napisao dati novinar
+
+\subsection{Urednik}
+
+Urednik predstavlja konkretizaciju zaposlenog. Kao i u slučaju novinara, jedino proširenje u pogledu podataka urednik ostvaruje jednim dodatnim atributom: \textbf{id vesti}. Kroz ovaj atribut urednik se povezuje sa vestima i ostvaruje mogućnosti kreiranja vesti, menjanja njenog statusa, korigovanja komentara vesti i sl.
+
+\subsection{Administrator}
+
+Administrator predstavlja konkretizaciju zaposlenog. Obzirom da je glavna uloga administratora upravljanje nalozima, ova grupa podataka ne zahteva nikakva proširenja skupa atributa. Administrator se vezuje jedino sa klasom nalog, i tako direktno utiče na upravljanje njima. 
+
+\subsection{Vesti}
+
+Centralna klasa celog sistema je klasa vest. Od podataka, ova klasa čuva:
+
+\begin{itemize}
+    \item id vesti
+    \item id novinara
+    \item id komentara
+    \item id ocena
+    \item tekst
+    \item kategorija
+    \item vreme
+    \item mesto
+    \item status
+\end{itemize}
+
+Obzirom da ostvaruje vezu sa klasama: novinar, komentar i ocena, ova klasa sadrži identifikatore klasa sa kojima se vezuje. Kako bi se znalo koji novinar je napisao vest, koje komentare vest sadrži i sa kojim ocenama je vest ocenjena neophodno je da se uspostavi veza ovih klasa sa klasom vest. \\
+Kao osnovne atribute vest sadrži tekst, prilog(dodatak), vreme kada je vest napisana i mesto na kojem je nastala. Takođe, vest treba da sadrži kategoriju kojoj pripada i to sa nekom od predefinisanih mogućnosti:
+
+\begin{itemize}
+    \item aktuelnosti
+    \item zabava
+    \item biznis
+    \item hronika
+    \item politika
+    \item drustvo
+    \item svet
+    \item nauka
+    \item umetnost
+    \item IT
+    \item sport
+    \item ostalo  
+\end{itemize}
+
+\  \\
+
+\indent Zavisno od tekućeg stanja u kojem se vest nalazi, status moze imati neku od sledećih vrednosti:
+\begin{itemize}
+    \item u pripremi
+    \item na čekanju
+    \item odobrena
+    \item arhivirana
+\end{itemize}
 
 
 
+\subsection{Komentar}
 
+Obzirom da je ovaj sistem izrazito dinamičan, postavljanje komentara je jedna od najčešćih operacija koja se događa u sistemu. S tim u vezi, kao jako značajna klasa izdvaja se klasa komentar. Ova klasa čuva naredne podatke:
 
+\begin{itemize}
+    \item id komentara
+    \item id naloga
+    \item id vesti
+    \item id ocena
+    \item tekst
+    \item vreme
+\end{itemize}
 
+Svaki komentar, mora znati za: nalog koji ga je kreirao i vest na koju se komentar odnosi. Takođe komentar može biti ocenjen od strane drugih korinika sistema, pa je neophodno ostvariti vezu i sa klasom ocena. Poredm toga, komentar sadrži i osnovne podatke poput teksta komentara i vremena kada je komentar objavljen.   
 
+\subsection{Ocena}
 
+Kao još jedan vid povratne infomacije od čitalaca, imamo i ocene koje čitaoci mogu ostavljati za vesti ili komentare drugih čitalaca. Od podataka, klasa ocena čuva:
+
+\begin{itemize}
+    \item id ocene
+    \item id čitaoca
+    \item id objekta(vesti ili komentara)
+    \item vrednost
+    \item tip(na šta se odnosi ocena: vest ili komentar)
+\end{itemize}
+
+\subsection{Čitalac}
+
+Čitaoc predstavlja konkretizaciju naloga. Njegova uloga u sistemu jeste čitanje vesti uz omogućenu interakciju kroz ocene i komentare. 
+
+Podaci o čitaocu koji se čuvaju su:
+\begin{itemize}
+    \item id čitaoca
+    \item id komentara
+    \item id ocena
+\end{itemize}
 
 
 \end{document}
