@@ -495,5 +495,38 @@ Podaci o čitaocu koji se čuvaju su:
     \label{slk:dtp}
 \end{figure}
 
+\newpage
+
+\section{Softverska arhitektura}
+
+Posmatrani informacioni sistem ima tri osnovna podsistema:
+
+\begin{enumerate}
+    \item \textbf{Zaposleni} - omogućava korišćenje sistema od strane novinara i urednika pri čemu se koriste usluge sledećih komponenti:
+        \begin{itemize}
+            \item Autentikacija - omogućava kreiranje novih naloga i registraciju zaposlenih sa već kreiranim nalozima
+            \item Obrada vesti - omogućava slanje, odobravanje vesti od strane urednika, pretraživanje vesti i tema, manipulaciju vestima koje su u bazi
+            \item Obrada komentara - omogućvava uklanjanje i izmenjivanje komentara
+        \end{itemize}
+    \item \textbf{Čitalac} - omogućava korišćenje sistema od strane čitalaca pri čemu se koriste usluge sledećih komponenti:
+        \begin{itemize}
+            \item Autentikacija - omogućava kreiranje novih naloga i registraciju zaposlenih sa već kreiranim nalozima
+            \item Čitanje vesti - omogućvava pretraživanje i čitanje vesti
+            \item Pisanje komentara i ocenjivanje - omogućvava postavljanje komentara i ocenjivanje vesti
+        \end{itemize}
+    \item \textbf{Administrator} - omogućava korišćenje sistema od strane administratora pri čemu se koriste usluge sledećih komponenti:
+        \begin{itemize}
+            \item Administracija - omogućava pre svega manipulaciju nalozima u bazi
+        \end{itemize}
+\end{enumerate}
+
+Takođe, nabrojane komponente koriste bazu podataka posredstvom interfejsa za komunikaciju sa bazom podataka(JDBC).  
+
+\newpage
+
+Informacioni sistem je podeljen na aplikacioni server i server baze podataka koji međusobno komuniciraju putem TCP/IP protokola. Aplikacioni server koristi JSP server Tomcat 10 i na njemu se izvršava aplikacija \textit{novinarska\_agencija.war}.
+Što se same implementacije tiče, \textit{zaposleni.jar} implementira komponentu zaposleni, \textit{citalac.jar} implementira komponentu citalac, a \textit{administrator.jar} implementira komponentu administrator. Za konfigurisanje aplikacije korišćen je fajl
+\textit{web\_config.xml}. Na serveru baze podataka se nalazi sama baza i radno okruženje \textit{MySQL}. 
+
 
 \end{document}
