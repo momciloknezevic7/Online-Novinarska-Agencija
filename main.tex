@@ -522,11 +522,29 @@ Posmatrani informacioni sistem ima tri osnovna podsistema:
 
 Takođe, nabrojane komponente koriste bazu podataka posredstvom interfejsa za komunikaciju sa bazom podataka(JDBC).  
 
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.4]{Dijagram_komponenti.jpg}
+    \caption{Dijagram komponenti}
+    \label{slk:dtp}
+\end{figure}
+
+\newpage
+
 \newpage
 
 Informacioni sistem je podeljen na aplikacioni server i server baze podataka koji međusobno komuniciraju putem TCP/IP protokola. Aplikacioni server koristi JSP server Tomcat 10 i na njemu se izvršava aplikacija \textit{novinarska\_agencija.war}.
 Što se same implementacije tiče, \textit{zaposleni.jar} implementira komponentu zaposleni, \textit{citalac.jar} implementira komponentu citalac, a \textit{administrator.jar} implementira komponentu administrator. Za konfigurisanje aplikacije korišćen je fajl
 \textit{web\_config.xml}. Na serveru baze podataka se nalazi sama baza i radno okruženje \textit{MySQL}. 
+
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.36]{Dijagram_isporucivanja.jpg}
+    \caption{Dijagram isporucivanja}
+    \label{slk:dtp}
+\end{figure}
+
+\newpage
 
 
 \end{document}
