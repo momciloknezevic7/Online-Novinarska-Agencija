@@ -38,7 +38,8 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 \indent \textbf{Novinar} - čija je uloga da prikuplja i šalje vesti, o nekom događaju, uredniku agencije u kojoj je zaposlen. Svaka vest, trebala bi da odgovori na šest novinarskih pitanja: Ko? Šta? Kada? Gde? Zašto? Kako? Pored toga, vest može sadržati i fotografiju i/ili video snimak koji bi dodatno privukli pažnju korisnika. \\
 \indent \textbf{Administrator} - ima ulogu da dobijene vesti skladišti u bazi, i pruži mogućnost da se vesti mogu pretraživati ili obrisati na zahtev urednika. Takođe administrator bi trebao da omogući novinarima interfjes ka bazi kako bi mogli da pretražuju objavljene vesti i teme na kojima rade drugi novinari (da se vesti ne bi ponavljale) \\
 \indent \textbf{Urednik} - čija je uloga da procesuira dobijene vesti, donese odluku koje od njih će bit objavljene, i vrši korekcije ukoliko je to potrebno. Pored toga, on može obavljati i funckiju novinara, odnosno može i sam pisati vesti. U pogledu interakcije sa čitaocima, uloga urednika je i da vrši recenziranje pristiglih komentara korisnika. \\
-\indent \textbf{Čitalac} - koji koristi sistem za čitanje objavljenih vesti. Pored toga, registrovani čitaoci mogu postavljati komentare, davati ocene za objavljene vesti, i imati uvid u komentare drugih čitalaca.
+\indent \textbf{Čitalac} - koji koristi sistem za čitanje objavljenih vesti. Pored toga, registrovani čitaoci mogu postavljati komentare, davati ocene za objavljene vesti, i imati uvid u komentare drugih čitalaca. 
+\\
 \indent Na Slici 1 se nalazi dijagram koji prikazuje učesnike sistema i njihove akcije.
 
 \newpage
@@ -92,21 +93,21 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
             \item Sistem validira unete podatke.
             \item Sistem šalje mail za potvrdu registracije.
             \item Sistem obaveštava korisnika da je mail za potvrdu poslat.
-            \item Korisnik potvrdjuje ispravnost podataka.
+            \item Korisnik potvrđuje ispravnost podataka.
             \item Sistem čuva podatke u bazi podataka.
             \item Sistem obaveštava korisnika o uspešno kreiranom nalogu.
 	    \end{enumerate}
     \item \textbf{Alternativni tokovi:}
         \begin{itemize}
-            \item[A1.] \textbf{Neuspešna validacija podataka.} Ukoliko sistem prilikom validacije naidje na neke neispravne podatke(pogrešan format, nemogućnost utvrđivanje identiteta zaposlenog...) obaveštava korisnika o pogrešno unetim podacima i zahteva njihovu korekciju.
-            \item[A2.] \textbf{Zauzeto korisničko ime.} Sistem utvrđuje dostupnost unetog korisničkog imena. U slučaju da ime nije dostupno, sistem zahteva novo ime, uz odredjene sugestije na osnovu prvog unosa.
+            \item[A1.] \textbf{Neuspešna validacija podataka.} Ukoliko sistem prilikom validacije naiđe na neke neispravne podatke(pogrešan format, nemogućnost utvrđivanje identiteta zaposlenog...) obaveštava korisnika o pogrešno unetim podacima i zahteva njihovu korekciju.
+            \item[A2.] \textbf{Zauzeto korisničko ime.} Sistem utvrđuje dostupnost unetog korisničkog imena. U slučaju da ime nije dostupno, sistem zahteva novo ime, uz određene sugestije na osnovu prvog unosa.
             \item[A3.] \textbf{E-mail za potvrdu nije stigao.} Ukoliko korisnik nije dobio e-mail za potvrdu, može zahtevati od sistema ponovno slanje e-maila.
              \item[A3.] \textbf{Administrator nije mogao da utvrdi da postoji zaposleni sa unetim podacim prilikom registracije.}
              Sistem obaveštava korisnika da nije bilo moguće utvrditi identitet zaposlenog.
         \end{itemize}
     \item \textbf{Specijalni zahtevi:}
         \begin{itemize}
-			\item Sistem zahteva odredjen kvalitet unete lozinke radi veće sigurnosti.
+			\item Sistem zahteva određen kvalitet unete lozinke radi veće sigurnosti.
 			\item Ukoliko se korisnik registruje kao zaposleni, potrebno je da administrator uradi proveru identiteta pre nego što se nalog kreira u bazi.
 		\end{itemize}
 	\item \textbf{Dodatne informacije:}
@@ -285,7 +286,7 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 	        \item Korisnik pretražuje vesti
 	        \item Sistem vraća korisniku vesti koje odgovaraju uslovima pretrage
 	        \item Korisnik bira vest kojom želi da manipuliše
-	        \item Korisnik potvrdjuje da napravljene izmene budu trajno sačuvane
+	        \item Korisnik potvrđuje da napravljene izmene budu trajno sačuvane
 	        \item Sistem napravljene promene čuva u bazi podataka
 	    \end{enumerate}
     \item \textbf{Alternativni tokovi:}
@@ -294,7 +295,7 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
         \end{itemize}
     \item \textbf{Specijalni zahtevi:}
         \begin{itemize}
-			\item Prilikom menjanja odredjene vesti, potrebno je uneti i razlog zbog kog se ta izmena pravi.
+			\item Prilikom menjanja određene vesti, potrebno je uneti i razlog zbog kog se ta izmena pravi.
 		\end{itemize}
 \end{itemize}
 
@@ -309,7 +310,7 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 
 \subsection{Selekcija vesti}
 \begin{itemize}
-    \item \textbf{Kratak opis:} Sistem omogućava korisnicima autorizovanim sa ulogom urednika da vrši odabir napisanih vesti koje su na čekanju. Ukoliko urednik da odobrenje za odredjenu vest, ona će biti i objavljena.
+    \item \textbf{Kratak opis:} Sistem omogućava korisnicima autorizovanim sa ulogom urednika da vrši odabir napisanih vesti koje su na čekanju. Ukoliko urednik da odobrenje za određenu vest, ona će biti i objavljena.
     \item \textbf{Preduslovi:} Sistem je aktivan. Korisnik je autorizovan sa odgovarajućom ulogom. 
     \item \textbf{Postuslovi:} Rešen je status napisanih vesti koje su bile na čekanju.
     \item \textbf{Osnovni tok:}
@@ -523,7 +524,7 @@ Takođe, nabrojane komponente koriste bazu podataka posredstvom interfejsa za ko
 
 \begin{figure}[htbp!]
     \centering
-    \includegraphics[scale=0.4]{Dijagram_komponenti.jpg}
+    \includegraphics[scale=0.38]{Dijagram_komponenti.jpg}
     \caption{Dijagram komponenti}
     \label{slk:dtp}
 \end{figure}
@@ -538,7 +539,7 @@ Informacioni sistem je podeljen na aplikacioni server i server baze podataka koj
 
 \begin{figure}[htbp!]
     \centering
-    \includegraphics[scale=0.36]{Dijagram_isporucivanja.jpg}
+    \includegraphics[scale=0.33]{Dijagram_isporucivanja.jpg}
     \caption{Dijagram isporucivanja}
     \label{slk:dtp}
 \end{figure}
@@ -549,23 +550,36 @@ Informacioni sistem je podeljen na aplikacioni server i server baze podataka koj
 
 \begin{figure}[htbp!]
     \centering
-    \includegraphics[scale=0.23]{PrijavaCitalaca.png}
+    \includegraphics[scale=0.20]{PrijavaCitalaca.png}
     \caption{Prijavljivanje čitalaca}
     \label{slk:dtp}
 \end{figure}
 
 \begin{figure}[htbp!]
     \centering
-    \includegraphics[scale=0.23]{PrijavljivanjeRadnika.png}
+    \includegraphics[scale=0.20]{PrijavljivanjeRadnika.png}
     \caption{Prijavljivanje radnika}
     \label{slk:dtp}
 \end{figure}
 
 \begin{figure}[htbp!]
     \centering
-    \includegraphics[scale=0.23]{SlanjeVesti.png}
+    \includegraphics[scale=0.20]{SlanjeVesti.png}
     \caption{Slanje novih vesti}
     \label{slk:dtp}
 \end{figure}
 
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.20]{PregledVesti.png}
+    \caption{Pregled svih vesti}
+    \label{slk:dtp}
+\end{figure}
+
+\begin{figure}[htbp!]
+    \centering
+    \includegraphics[scale=0.20]{PrimerVesti.png}
+    \caption{Primer otvorene vesti}
+    \label{slk:dtp}
+\end{figure}
 \end{document}
