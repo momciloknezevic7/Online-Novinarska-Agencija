@@ -33,10 +33,11 @@ fakulteta. Rad opisuje informacioni sistem online novinarske agencije. \\
 \indent Obzirom da živimo u vremenu gde su informacije ključne za svakodnevno funkcionisanje, ovakav sistem omogućuje da se informacije pravovremeno i efikasno šire tako da budu dostupne što većem broju ljudi.  Ideja je, da se u eri pametnih telefona, uspostavi direktna veza između novinarskih agencija i korisnika.
 
 \section{Analiza sistema}
-Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje informacija iz raznih sfera interesovanja, putem interneta. Tok informacija kretao bi se od novinarskih agencija ka čitaocima. Pored toga, bitan aspekt sistema bio bi i komunikacija novinara (dopisnika) sa novinarskom agencijom, kao i procesuiranje dobijenih vesti od strane urednika agencije. Takođe bilo bi poželjno da sistem omogućava neki vid povratne informacije od korisnika ka samoj agenciji (komentari, ocene članaka...)  \\
+Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje informacija iz raznih sfera interesovanja, putem interneta. Tok informacija kretao bi se od novinarskih agencija ka čitaocima. Pored toga, bitan aspekt sistema bilo bi i  procesuiranje dobijenih vesti od strane urednika agencije. Takođe bilo bi poželjno da sistem omogućava neki vid povratne informacije od korisnika ka samoj agenciji (komentari, ocene članaka...)  \\
 \indent Činioci sistema u opštem slučaju su: \\
 \indent \textbf{Novinar} - čija je uloga da prikuplja i šalje vesti, o nekom događaju, uredniku agencije u kojoj je zaposlen. Svaka vest, trebala bi da odgovori na šest novinarskih pitanja: Ko? Šta? Kada? Gde? Zašto? Kako? Pored toga, vest može sadržati i fotografiju i/ili video snimak koji bi dodatno privukli pažnju korisnika. \\
-\indent \textbf{Administrator} - ima ulogu da dobijene vesti skladišti u bazi, i pruži mogućnost da se vesti mogu pretraživati ili obrisati na zahtev urednika. Takođe administrator bi trebao da omogući novinarima interfjes ka bazi kako bi mogli da pretražuju objavljene vesti i teme na kojima rade drugi novinari (da se vesti ne bi ponavljale) \\
+\indent \textbf{Administrator} - ima ulogu da održava bazu i rukovodi kreiranjem(odobrava) i brisanjem korisničkih naloga.
+\\
 \indent \textbf{Urednik} - čija je uloga da procesuira dobijene vesti, donese odluku koje od njih će bit objavljene, i vrši korekcije ukoliko je to potrebno. Pored toga, on može obavljati i funckiju novinara, odnosno može i sam pisati vesti. U pogledu interakcije sa čitaocima, uloga urednika je i da vrši recenziranje pristiglih komentara korisnika. \\
 \indent \textbf{Čitalac} - koji koristi sistem za čitanje objavljenih vesti. Pored toga, registrovani čitaoci mogu postavljati komentare, davati ocene za objavljene vesti, i imati uvid u komentare drugih čitalaca. 
 \\
@@ -196,7 +197,7 @@ Informacioni sistem Online novinarske agencije omogućava pravovremeno širenje 
 \subsection{Slanje vesti}
 \begin{itemize}
     \item \textbf{Kratak opis:} Korisnici koji su se autorizovali kao novinar ili urednik imaju mogućnost slanja vesti, što podrazumeva slanje autorskog teksta i eventualnog priloga (slika ili video) sa ciljem da se vest objavi. 
-    \item \textbf{Preduslovi:} Sistem je aktivan. Korisnik je prijavljen na nalog koji mogućnost slanja vesti.  
+    \item \textbf{Preduslovi:} Sistem je aktivan. Korisnik je prijavljen na nalog koji ima mogućnost slanja vesti.  
     \item \textbf{Postuslovi:} Vest je skladištena u privremenu bazu i čeka odobrenje. Korisnik dobija obaveštenje da je vest pristigla.
     \item \textbf{Osnovni tok:}
         \begin{enumerate}
